@@ -31,7 +31,7 @@ for i in instructions:
     print(i)
 
 # Taking a look at the dataset
-df = pd.read_csv('PS_2023.03.18_06.37.511.csv')
+df = pd.read_csv('PS_2023.03.18_06.37.511.csv',low_memory=False)
 df.shape # (34084, 287)
 df.dtypes
 df.columns
@@ -62,18 +62,6 @@ df.dtypes
 df.describe()
 df.info
 
-# Looking at percentage of nulls
-df.isnull().sum()*100/df.shape[0]
-
-df.orbital_period.mean()
-df.orbital_period.median()
-plt.hist(df.orbital_period)
-df.orbital_period.plot.box()
-
-df.st_efftemp.mean()
-df.st_efftemp.median()
-plt.hist(df.st_efftemp)
-df.st_efftemp.plot.box()
-
+df.to_csv('cleaned.csv',index=None)
 
 
